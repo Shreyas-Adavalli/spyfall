@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spyfall — Role Reveal</title>
+</head>
+<body>
+    <h1>{{ player_name }}</h1>
+    <p>{{ message }}</p>
+
+    {% if more %}
+        <form action="/player">
+            <button type="submit">Next Player</button>
+        </form>
+    {% else %}
+        <p>All roles shown!</p>
+
+        <form action="{{ url_for('game') }}">
+            <button type="submit">Continue</button>
+        </form>
+    {% endif %}
+
+</body>
+</html>

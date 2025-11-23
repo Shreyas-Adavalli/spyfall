@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spyfall — Enter Players</title>
+</head>
+<body>
+
+<h1>Enter Players</h1>
+
+<form method="POST" action="/start">
+    <input type="hidden" name="category" value="{{ category }}">
+
+    <textarea name="players" rows="8" cols="30" placeholder="One name per line"></textarea><br><br>
+
+    <label>Timer (minutes):</label>
+    <input type="number" name="timer" value="3" min="1" max="20"><br><br>
+
+    <button type="submit">Start Game</button>
+</form>
+
+</body>
+</html>

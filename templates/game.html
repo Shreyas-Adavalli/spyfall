@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spyfall — Game</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .timer {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .locations-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 20px;
+        }
+
+        .locations-container div {
+            padding: 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- store timer (minutes) safely in a data attribute -->
+  <div id="game" data-timer="{{ timer }}">
+    <h1>All Roles Assigned</h1>
+
+    <div id="timerBox">
+      Timer: <span id="timerDisplay">{{ timer }}:00</span>
+    </div>
+
+    <button id="startBtn">Start Timer</button>
+
+    <h2>Locations</h2>
+
+    <div class="locations-container">
+        {% for loc in locations %}
+            <div>{{ loc }}</div>
+        {% endfor %}
+    </div>
+
+  <script>
+    (function () {
+      // Read timer minutes from the data attribute and convert to seconds
+      const gameEl = document.getElementById('game');
+      const minutes = Number(gameEl.dataset.timer) || 3; // fallback 3
+      let timeLeft = Math.floor(minutes) * 60;
+
+      const timerDisplay = document.getElementById('timerDisplay');
+      const startBtn = document.getElementById('startBtn');
+
+      let intervalId = null;
+      let started = false;
+
+      // helper to format mm:ss
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return m + ':' + (s < 10 ? '0' + s : s);
+      }
+
+      // initialize visible display
+      timerDisplay.textContent = formatTime(timeLeft);
+
+      function startTimer() {
+        if (started) return;
+        started = true;
+        startBtn.disabled = true;
+
+        intervalId = setInterval(() => {
+          timeLeft--;
+          if (timeLeft < 0) {
+            clearInterval(intervalId);
+            timerDisplay.textContent = "Time's up!";
+            // optional: re-enable button if you want to restart
+            return;
+          }
+          timerDisplay.textContent = formatTime(timeLeft);
+        }, 1000);
+      }
+
+      // wire up button
+      startBtn.addEventListener('click', startTimer);
+
+      // optional: expose for debugging (remove in production)
+      window.__spyfall_timer = { start: startTimer, getTimeLeft: () => timeLeft };
+    })();
+
+
+  </script>
+
+  <form action="/" method="get" style="margin-top:20px;">
+    <button type="submit" style="font-size:18px; padding:8px 14px;">
+      New Game
+    </button>
+  </form>
+  
+</body>
+</html>
