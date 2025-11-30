@@ -1,44 +1,97 @@
+/* === GLOBAL STYLING ================================================== */
+
+/* Clean modern font */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #bebecf;
+    color: #222;
+}
+
+/* Centers content with max width for readability */
+.container {
+    max-width: 700px;
     margin: auto;
     padding: 20px;
 }
 
-h1, h2 {
+/* === TITLES ========================================================== */
+
+/* Large, bold title */
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* Simple secondary title */
+.subtitle {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* === TIMER BOX ======================================================= */
+
+/* Nice card-like box around timer */
+.timer-box {
+    background: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: fit-content;
+    border-radius: 12px; /* rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* soft shadow */
     text-align: center;
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    margin: 10px 0;
+.timer-label {
+    font-size: 14px;
+    color: #666;
 }
 
-input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    margin-top: 10px;
-    box-sizing: border-box;
+.timer-value {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
-.container {
-    padding: 10px;
-}
+/* === LOCATION GRID =================================================== */
 
-/* Multi-column list collapses nicely on mobile */
-.locations {
+/* Responsive multi-column grid */
+.locations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 8px;
-    font-size: 15px;
-    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
     padding: 0;
-    margin: 0;
+    list-style: none;
+    margin: 0 0 40px 0;
 }
 
-.locations li {
-    padding: 4px 0;
+/* Aesthetic card for each location */
+.location-item {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* Little hover animation */
+.location-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Makes text nicer on small screens */
+@media (max-width: 500px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .timer-value {
+        font-size: 22px;
+    }
 }
