@@ -5,7 +5,7 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    background: #bebecf;
+    background: #51a2ff;
     color: #222;
 }
 
@@ -94,4 +94,25 @@ body {
     .timer-value {
         font-size: 22px;
     }
+}
+
+button,
+.start-btn,
+.new-game-btn,
+.category-btn,
+.player-btn,
+.reveal-btn {
+    display: block;
+    width: 100%;
+    max-width: 500px;      /* prevents it from being massive on desktop */
+    margin: 10px auto;
+    padding: 15px 20px;
+
+    font-size: 1.1rem;
+    border-radius: 10px;
+    text-align: center;
+
+    /* Optional aesthetics */
+    cursor: pointer;
+    border: none;
 }
