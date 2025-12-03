@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Game Hub</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Welcome to the Game Hub</h1>
+
+        <h2 class="subtitle">Choose a Game</h2>
+
+        <div class="menu-buttons">
+            <a href="/spyfall" class="menu-btn">Play Spyfall</a>
+
+            <!-- Future games -->
+            <a class="menu-btn disabled">Tic Tac Toe (coming soon)</a>
+            <a class="menu-btn disabled">Connect 4 (coming soon)</a>
+            <a class="menu-btn disabled">Battleship (coming soon)</a>
+        </div>
+    </div>
+</body>
+</html>

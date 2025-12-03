@@ -15,14 +15,17 @@ chosen_category = ""
 
 @app.route("/")
 def home():
-    # If coming back from a finished game, refill the text area with previous names
+    return render_template("home.html")   # Homepage for selecting game
+
+@app.route("/spyfall")
+def spyfall_home():
     previous_players = session.get("players_text", "")
     return render_template("categories.html",
                            categories=CATEGORIES.keys(),
                            previous_players=previous_players)
 
 
-@app.route("/choose-category", methods=["POST"])
+@app.route("/spyfall/choose-category", methods=["POST"])
 def choose_category():
     global chosen_category
     chosen_category = request.form["category"]
@@ -35,7 +38,7 @@ def choose_category():
                            previous_players=previous_players)
 
 
-@app.route("/start", methods=["POST"])
+@app.route("/spyfall/start", methods=["POST"])
 def start():
     global players, roles, current_player, current_item, timer_minutes, chosen_category
 
@@ -64,7 +67,7 @@ def start():
     return redirect(url_for('player'))
 
 
-@app.route("/player")
+@app.route("/spyfall/player")
 def player():
     global current_player
 
@@ -95,7 +98,7 @@ def player():
                                next_player=players[next_index])
 
 
-@app.route("/game")
+@app.route("/spyfall/game")
 def game():
     return render_template("game.html",
                            timer=timer_minutes,

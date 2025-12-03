@@ -26,7 +26,7 @@ CATEGORIES = {
 
     "Cartoons": [
         "Adventure Time","Amazing World of Gumball","Avatar: the Last Air Bender",
-        "Barney","Ben 10","Ben and Holly","Bluey","Boss Baby","Chota bheem","Dog Man",
+        "Barney","Ben 10","Ben and Holly","Bluey","Boss Baby","Chota bheem","DogMan",
         "Dora the Explorer","Garfield", "Mickey Mouse Clubhouse","Minions","My Little Pony",
         "Olive the Ostrich","Paw Patrol","Peppa Pig","Penguins of Madagascar",
         "Phineas and Ferb","Regular Show","Scooby Doo","Sesame Street",
@@ -35,18 +35,19 @@ CATEGORIES = {
     ],
 
     "Food": [
-        "Apple", "Bagel","Banana","Bread","Burger","Burrito","Cheese","Chicken Nuggets","Chocolate Cake","Cupcake","Curry",
-        "Donut","Dumplings","Eggs","French Fries","Fried Chicken","Hot Dog","Ice Cream","Juice","Milk",
-        "Muesli Bar","Nachos","Pancakes","Pasta","Pie","Pizza","Popcorn","Ramen","Salad",
+        "Apple", "Bagel","Banana","Bread","Burger","Burrito","Cheese","Chicken Nuggets","Chocolate Cake",
+        "Cupcake","Curry","Donut","Dumplings","Eggs","French Fries","Fried Chicken","Hot Dog","Ice Cream",
+        "Juice","Milk","Muesli Bar","Nachos","Pancakes","Pasta","Pie","Pizza","Popcorn","Ramen","Salad",
         "Sandwich","Smoothie","Soda","Soup", "Steak","Sushi","Tacos","Waffles", "Watermelon"
     ],
 
 
     "Animals": [
-        "Armadillo","Badger","Bear","Cat","Chameleon","Crocodile","Deer","Dog","Dolphin",
-        "Eagle","Elephant","Fox","Frog","Giraffe","Hippopotamus","Horse","Kangaroo",
-        "Lion","Meerkat","Monkey","Otter","Owl","Panda","Parrot","Penguin","Rabbit",
-        "Raccoon","Sloth","Squirrel","Tiger","Turtle","Wolf","Zebra"
+        "Ant","Badger","Bear","Cat","Chameleon","Crocodile","Deer","Dog","Dolphin",
+        "Eagle","Elephant","Fish","Fox","Frog","Giraffe","Hippo","Horse","Immortal Jellyfish",
+        "Jaguar","Kangaroo","Lion","Meerkat","Monkey","Narwhal","Octopus","Otter","Owl","Panda",
+        "Parrot","Penguin","Quail","Rabbit","Raccoon","Shark","Sloth","Squirrel","Tiger",
+        "Turtle","Urchin","Vampire Bat","Wolf","Yak","Zebra"
     ],
 
 
