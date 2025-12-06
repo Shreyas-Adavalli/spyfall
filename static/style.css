@@ -125,8 +125,10 @@ button,
 .new-game-btn,
 .category-btn,
 .player-btn,
-.reveal-btn
-.menu-btn {
+.reveal-btn,
+.menu-btn,
+.menu-btn:link,
+.menu-btn:visited {
     display: block;
     width: 90%;
     max-width: 500px;      /* prevents it from being massive on desktop */
@@ -135,8 +137,11 @@ button,
     font-size: 1.2rem;
     border-radius: 10px;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
 
     /* Optional aesthetics */
     cursor: pointer;
     border: none;
+    background-color: #4a90e2;
 }
