@@ -9,7 +9,7 @@
 <body>
     <h1>Select a Category</h1>
 
-    <form method="POST" action="spyfall/choose-category">
+    <form method="POST" action="/spyfall/choose-category">
         <select name="category">
             {% for cat in categories %}
                 <option value="{{ cat }}">{{ cat }}</option>
