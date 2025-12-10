@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <title>Spyfall</title>
+    <title>Imposter</title>
 
 <body>
 
@@ -33,7 +33,7 @@
         </ul>
 
         <!-- New game button -->
-        <form action="/spyfall" method="get" class="new-game-form">
+        <form action="/imposter" method="get" class="new-game-form">
             <button type="submit" class="new-game-btn">
                 New Game
             </button>
@@ -44,10 +44,6 @@
             <button type="submit" class="new-game-btn">
                 Back to Home
             </button>
-        </form>
-        <a href="/" class="new-game-btn" style="text-decoration:none; text-align:center;">
-            Back to Home
-        </a>
 
     </div>
 
@@ -77,6 +73,7 @@
                 if (running) return;
                 running = true;
                 startBtn.disabled = true;
+                startBtn.style.display = "none";
                 pauseBtn.style.display = "block";
 
                 intervalId = setInterval(() => {

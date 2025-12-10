@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <title>Spyfall — Choose Category</title>
+    <title>Imposter — Choose Category</title>
 </head>
 <body>
     <h1>Select a Category</h1>
 
-    <form method="POST" action="/spyfall/choose-category">
+    <form method="POST" action="/imposter/choose-category">
         <select name="category">
             {% for cat in categories %}
                 <option value="{{ cat }}">{{ cat }}</option>

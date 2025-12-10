@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <title>Spyfall — Role Reveal</title>
+    <title>Imposter — Role Reveal</title>
 </head>
 <body>
     <h1>{{ player_name }}</h1>
     <p>{{ message }}</p>
 
     {% if more %}
-        <form action="/spyfall/player">
+        <form action="/imposter/player">
             <button type="submit">Next Player</button>
         </form>
     {% else %}

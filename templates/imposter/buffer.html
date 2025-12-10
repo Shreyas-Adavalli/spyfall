@@ -4,13 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     
-    <title>Spyfall — Next Player</title>
+    <title>Imposter — Next Player</title>
 </head>
 <body>
     <h1>Hand the device to {{ next_player }}</h1>
     <p>Tap the button when ready to reveal your role.</p>
 
-    <form action="/spyfall/player">
+    <form action="/imposter/player">
         <button type="submit" name="reveal" value="1">Reveal Role</button>
     </form>
 </body>

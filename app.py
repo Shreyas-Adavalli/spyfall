@@ -20,15 +20,15 @@ chosen_category = ""
 def home():
     return render_template("home.html")   # Homepage for selecting game
 
-@app.route("/spyfall")
-def spyfall_home():
+@app.route("/imposter")
+def imposter_home():
     previous_players = session.get("players_text", "")
-    return render_template("spyfall/categories.html",
+    return render_template("imposter/categories.html",
                            categories=CATEGORIES.keys(),
                            previous_players=previous_players)
 
 
-@app.route("/spyfall/choose-category", methods=["POST"])
+@app.route("/imposter/choose-category", methods=["POST"])
 def choose_category():
     global chosen_category
     chosen_category = request.form["category"]
@@ -36,12 +36,12 @@ def choose_category():
     # Pass previously used names to the players screen
     previous_players = session.get("players_text", "")
 
-    return render_template("spyfall/players.html",
+    return render_template("imposter/players.html",
                            category=chosen_category,
                            previous_players=previous_players)
 
 
-@app.route("/spyfall/start", methods=["POST"])
+@app.route("/imposter/start", methods=["POST"])
 def start():
     global players, roles, current_player, current_item, timer_minutes, chosen_category
 
@@ -70,7 +70,7 @@ def start():
     return redirect(url_for('player'))
 
 
-@app.route("/spyfall/player")
+@app.route("/imposter/player")
 def player():
     global current_player
 
@@ -87,8 +87,8 @@ def player():
         role = roles[current_player]
         more = current_player < len(players) - 1
 
-        return render_template("spyfall/role.html",
-                               player_name=f"{name}, this is your role!",
+        return render_template("imposter/role.html",
+                               player_name=f"{name}, this is the word!",
                                message=role,
                                more=more)
 
@@ -97,22 +97,22 @@ def player():
         if next_index >= len(players):
             return redirect(url_for('game'))
 
-        return render_template("spyfall/buffer.html",
+        return render_template("imposter/buffer.html",
                                next_player=players[next_index])
 
 
-@app.route("/spyfall/game")
+@app.route("/imposter/game")
 def game():
-    return render_template("spyfall/game.html",
+    return render_template("imposter/game.html",
                            timer=timer_minutes,
                            locations=CATEGORIES[chosen_category])
 
 
 
 
-@app.route("/wavelength")
-def wavelength_home():
-    return render_template("wavelength/home.html")
+@app.route("/insync")
+def insync_home():
+    return render_template("insync/home.html")
 
 
 if __name__ == "__main__":

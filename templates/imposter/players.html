@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <title>Spyfall — Enter Players</title>
+    <title>Imposter — Enter Players</title>
 </head>
 
 <body>
 
 <h1>Enter Players</h1>
 
-<form method="POST" action="/spyfall/start">
+<form method="POST" action="/imposter/start">
     <input type="hidden" name="category" value="{{ category }}">
 
     <textarea name="players" rows="8" cols="30" placeholder="One name per line">{{ previous_players }}</textarea><br><br>
