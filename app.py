@@ -3,6 +3,9 @@ import random
 from categories import CATEGORIES
 import os
 
+
+# WL Aes and concept changes (Last definitely working commit)
+
 app = Flask(__name__)
 app.secret_key = "apasswordineedforsomereason" 
 

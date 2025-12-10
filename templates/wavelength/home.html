@@ -284,7 +284,7 @@
         }
 
         .score-5 {
-            color: #1d9d00;
+            color: #52c638;
             font-weight: bold;
         }
 
@@ -443,10 +443,10 @@
         <div class="controls">
             <button id="toggleButton">Hide Target</button>
             <button id="nextRoundButton">Next Round</button>
-            <button id="newGameButton" style="background-color: red; color: white">
+            <button id="newGameButton" style="background-color: rgb(255, 104, 58); color: white">
                 New Game
             </button>
-            <button id="homeButton" style="background-color: rgb(255, 88, 27); color: white">
+            <button id="homeButton" style="background-color: rgb(255, 104, 58); color: white">
                 Home Page
             </button>
 
@@ -461,6 +461,7 @@
             const toggleButton = document.getElementById("toggleButton");
             const nextRoundButton = document.getElementById("nextRoundButton");
             const newGameButton = document.getElementById("newGameButton");
+            const homeButton = document.getElementById("homeButton");
             const cluesElement = document.getElementById("clues");
             const scoreElement = document.getElementById("score");
             const totalScoreElement = document.getElementById("totalScore");
@@ -647,7 +648,7 @@
                     }deg,
                 #feca57 ${targetAngle - 13.5 + 90}deg ${targetAngle - 4.5 + 90
                     }deg,
-                #1d9d00 ${targetAngle - 4.5 + 90}deg ${targetAngle + 4.5 + 90
+                #52c638 ${targetAngle - 4.5 + 90}deg ${targetAngle + 4.5 + 90
                     }deg,
                 #feca57 ${targetAngle + 4.5 + 90}deg ${targetAngle + 13.5 + 90
                     }deg,
@@ -822,6 +823,10 @@
                 totalScoreElement.textContent = "Total Score: 0";
                 hideNeedle();
                 updateScoreDisplay();
+            });
+
+            homeButton.addEventListener("click", () => {
+                window.location.href = "{{ url_for('home') }}";
             });
 
             // Initialize the game
