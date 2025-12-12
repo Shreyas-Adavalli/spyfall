@@ -772,7 +772,7 @@
                 isTargetVisible = !isTargetVisible;
                 targetArea.style.display = isTargetVisible ? "block" : "none";
                 if (!isTargetVisible) {
-                    toggleButton.textContent = "Reveal Target";
+                    //toggleButton.textContent = "Reveal Target";
                     scoreElement.textContent = "";
                     showNeedle();
                     canMoveNeedle = true; // Allow needle movement when target is hidden
@@ -800,7 +800,68 @@
                 }
             });*/
 
-            flowButton.addEventListener("click", () => {
+            toggleButton.addEventListener("click", () => {
+
+                // PHASE 1 — Target currently visible → Hide it
+                if (isTargetVisible) {
+                    isTargetVisible = false;
+                    targetArea.style.display = "none";
+                    toggleButton.textContent = "Reveal Target";
+
+                    scoreElement.textContent = "";
+                    showNeedle();
+                    canMoveNeedle = true;  // Needle can move
+                    return; // End Phase 1
+                }
+
+                // PHASE 2 — Target currently hidden → Reveal and score
+                if (!isTargetVisible && toggleButton.textContent === "Reveal Target") {
+                    isTargetVisible = true;
+                    targetArea.style.display = "block";
+                    toggleButton.textContent = "Next Round";
+
+                    const needleAngle =
+                        parseFloat(needle.style.transform.replace("rotate(", "").replace("deg)", "")) || 0;
+
+                    const score = calculateScore(needleAngle);
+                    totalScore += score;
+
+                    scoreElement.textContent = `${teams[currentTeamIndex].name} scored: ${score} points`;
+                    totalScoreElement.textContent = `Total Score: ${totalScore}`;
+
+                    teams[currentTeamIndex].score += score;
+                    updateScoreDisplay();
+
+                    canMoveNeedle = false; // Needle locked now
+
+                    if (score === 4) triggerConfetti();
+
+                    return; // End Phase 2
+                }
+
+                // PHASE 3 — Next Round
+                if (toggleButton.textContent === "Next Round") {
+                    setTargetArea();
+                    setRandomClues();
+
+                    isTargetVisible = true;
+                    targetArea.style.display = "block";
+                    toggleButton.textContent = "Hide Target";
+
+                    needle.style.transform = "rotate(0deg)";
+                    scoreElement.textContent = "";
+                    hideNeedle();
+                    canMoveNeedle = false;
+
+                    currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+                    updateScoreDisplay();
+
+                    return; // End Phase 3
+                }
+            });
+
+
+            /*flowButton.addEventListener("click", () => {
                 if (flowState === 0) {
                     // STEP 1 → Hide Target
                     targetArea.style.display = "none";
@@ -832,7 +893,7 @@
                     flowState = 0;
                     flowButton.textContent = "Hide Target";
                 }
-            });
+            });*/
 
             newGameButton.addEventListener("click", () => {
                 teams.forEach(team => team.score = 0);
