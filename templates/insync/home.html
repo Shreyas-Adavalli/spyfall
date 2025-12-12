@@ -284,7 +284,7 @@
         }
 
         .score-5 {
-            color: #52c638;
+            color: #94ff7c;
             font-weight: bold;
         }
 
@@ -389,16 +389,16 @@
                 <h2>How to Play In-Sync</h2>
                 <div class="modal-body">
                     <ol>
-                        <li>Everyone in the team except the Psychic that round looks away.</li>
+                        <li>Everyone in the team, except one, looks away.</li>
                         <li>A pair of opposing concepts will be displayed.</li>
-                        <li>The Psychic clicks "Hide Target" after seeing the target.</li>
-                        <li> They then give a clue where the target is located
+                        <li>That player clicks "Hide Target" after seeing the target.</li>
+                        <li> They then give a clue (a word, phrase or sentence) of where the target is located
                             on the spectrum between the concepts.</li>
                         <ul>
                             <li>For example, between HOT and COLD.</li>
-                            <li>The Psychic can say something like tea.</li>
+                            <li>They could say something like "tea" or "ice".</li>
                         </ul>
-                        <li>Now it’s up to the Psychic’s team to discuss the
+                        <li>Now it’s up to their team to discuss the
                             clue and decide where to turn the dial.</li>
                         <li>Click and drag the needle to set your guess.</li>
                         <li>Click "Reveal Target" to see how close you were.</li>
@@ -407,10 +407,11 @@
                                 <li><span class="score-5">5 points:</span> Bull's Eye (Green)</li>
                                 <li><span class="score-3">3 points:</span> Close (Yellow)</li>
                                 <li><span class="score-1">1 point:</span> Not Bad (Red)</li>
-                                <li><span class="score-0">0 points:</span> Miss</li>
+                                <li><span class="score-0">0 points:</span> Miss (Grey)</li>
                             </ul>
                         </li>
                         <li>Click "Next Round" to continue or "New Game" to start over.</li>
+                        <li>The next team does the same with a different person looking each round.</li>
                     </ol>
                 </div>
                 <button class="close-button">Got it!</button>
@@ -441,14 +442,14 @@
             <div class="clue" id="rightClue"></div>
         </div>
         <div class="controls">
-            <button id="toggleButton">Hide Target</button>
-            <button id="nextRoundButton">Next Round</button>
+            <button id="flowButton">Hide Target</button>
             <button id="newGameButton" style="background-color: rgb(255, 104, 58); color: white">
                 New Game
             </button>
             <button id="homeButton" style="background-color: rgb(255, 104, 58); color: white">
                 Back to Home
             </button>
+
 
         </div>
         <div id="score"></div>
@@ -459,36 +460,42 @@
             const needle = document.getElementById("needle");
             const targetArea = document.getElementById("targetArea");
             const toggleButton = document.getElementById("toggleButton");
+            const flowButton = document.getElementById("flowButton");
             const nextRoundButton = document.getElementById("nextRoundButton");
             const newGameButton = document.getElementById("newGameButton");
             const homeButton = document.getElementById("homeButton");
             const cluesElement = document.getElementById("clues");
             const scoreElement = document.getElementById("score");
             const totalScoreElement = document.getElementById("totalScore");
+            
 
             let isDragging = false;
             let targetAngle = 0;
             let isTargetVisible = true;
             let totalScore = 0;
             let canMoveNeedle = false;
+            let flowState = 0;  
+            // 0 = Hide Target
+            // 1 = Reveal Target
+            // 2 = Next Round
 
             const clues = [
                 ["Fast Food", "Gourmet Food"],
                 ["Mild Food", "Spicy Food"],
                 ["Cheap Product", "Expensive Product"],
                 ["Easy Job", "Difficult Job"],
-             //   ["Fruity Character", "Straight Character"],
-            //    ["Gay", "Straight"],
+                ["Fruity Character", "Straight Character"],
+                ["Gay", "Straight"],
                 ["Funny Movie", "Serious Movie"],
                 ["Normie Movie", "Cinephile Movie"]
                 ["Cheap Vacation", "Luxury Vacation"],
                 ["Introvert", "Extrovert"],
-            //    ["White Person Activity", "POC Activity"],
-            //    ["White Kid Would Say This to Parent", "Non-White Kid Would Say This to Parent"],
-            //    ["Toxic Relationship", "Healthy Relationship"],
+                ["White Person Activity", "POC Activity"],
+                ["White Kid Would Say This to Parent", "Non-White Kid Would Say This to Parent"],
+                ["Toxic Relationship", "Healthy Relationship"],
                 ["Bad Haircut", "Great Haircut"],
-            //    ["Has Messy Handwriting", "Has Beautiful Handwriting"],
-            //    ["Bad At Dancing", "Impressive Dancing"],
+                ["Has Messy Handwriting", "Has Beautiful Handwriting"],
+                ["Bad At Dancing", "Impressive Dancing"],
                 ["Bad Company", "Good Company"],
                 ["Terrible Movie", "Amazing Movie"],
                 ["Forgettable Person", "Memorable Person"],
@@ -512,7 +519,7 @@
                 ["Underpaid Job", "Overpaid Job"],
                 ["Underrated Skill", "Overrated Skill"],
             //  ["Unsexy Emoji", "Sexy Emoji"],
-            //  ["Siblings", "Dating"],
+                ["Siblings", "Dating"],
                 ["Useless", "Useful"],
                 ["Villain", "Hero"],
                 ["Worst Day Ever", "Best Day Ever"],
@@ -570,7 +577,7 @@
                 ["Terrible Costume Idea", "Creative Costume Idea"],
                 ["Worst Cooking Mistake", "Game-Changing Cooking Tip"],
                 ["Annoying Exercise", "Fun Exercise"],
-            //    ["Terrible Breakup Method", "Respectful Breakup Method"],
+                ["Terrible Breakup Method", "Respectful Breakup Method"],
                 ["Worst Motivational Poster", "Actually Motivating Poster"],
                 ["Terrible Hiding Spot", "Clever Hiding Spot"],
                 ["Worst Trend from Your Parents' Era", "Cool Retro Trend"],
@@ -579,7 +586,7 @@
                 ["Fakest Reason to Call in Sick", "Legitimate Reason to Call in Sick"],
                 ["Annoying Phone Notification", "Important Phone Notification"],
                 ["Terrible Boat Name", "Clever Boat Name"],
-            //    ["Worst Reason to Break Up", "Valid Reason to Break Up"],
+                ["Worst Reason to Break Up", "Valid Reason to Break Up"],
                 ["Annoying Gym Behavior", "Proper Gym Etiquette"],
                 ["Terrible Airline", "Top-Rated Airline"],
                 ["Worst Bathroom Graffiti", "Profound Bathroom Graffiti"],
@@ -648,7 +655,7 @@
                     }deg,
                 #feca57 ${targetAngle - 13.5 + 90}deg ${targetAngle - 4.5 + 90
                     }deg,
-                #52c638 ${targetAngle - 4.5 + 90}deg ${targetAngle + 4.5 + 90
+                #94ff7c ${targetAngle - 4.5 + 90}deg ${targetAngle + 4.5 + 90
                     }deg,
                 #feca57 ${targetAngle + 4.5 + 90}deg ${targetAngle + 13.5 + 90
                     }deg,
@@ -793,20 +800,40 @@
                 }
             });
 
-            nextRoundButton.addEventListener("click", () => {
-                setTargetArea();
-                setRandomClues();
-                isTargetVisible = true;
-                targetArea.style.display = "block";
-                toggleButton.textContent = "Hide Target";
-                toggleButton.style.display = "inline-block";
-                needle.style.transform = "rotate(0deg)";
-                scoreElement.textContent = "";
-                hideNeedle();
-                canMoveNeedle = false; // Re-enable needle movement for the next round
-                currentTeamIndex = (currentTeamIndex + 1) % teams.length;
-                updateScoreDisplay();
-            });
+                flowButton.addEventListener("click", () => {
+                    if (flowState === 0) {
+                        // STEP 1 → Hide Target
+                        targetArea.style.display = "none";
+                        hideNeedle();
+                        flowState = 1;
+                        flowButton.textContent = "Reveal Target";
+                    }
+
+                    else if (flowState === 1) {
+                        // STEP 2 → Reveal Target
+                        targetArea.style.display = "block";
+                        isTargetVisible = true;
+                        needle.style.transform = "rotate(0deg)";
+                        flowState = 2;
+                        flowButton.textContent = "Next Round";
+                    }
+
+                    else if (flowState === 2) {
+                        // STEP 3 → Next Round
+                        setTargetArea();
+                        setRandomClues();
+                        hideNeedle();
+                        isTargetVisible = false;
+
+                        // Move to next team
+                        currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+                        updateScoreDisplay();
+
+                        // Reset to Start of Cycle
+                        flowState = 0;
+                        flowButton.textContent = "Hide Target";
+                    }
+                });
 
             newGameButton.addEventListener("click", () => {
                 teams.forEach(team => team.score = 0);

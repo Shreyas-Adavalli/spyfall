@@ -3,8 +3,14 @@ import random
 from categories import CATEGORIES
 import os
 
-
-# WL Aes and concept changes (Last definitely working commit)
+#Merge reveal and next Round
+#move buttons around
+#make larger
+#you are the spy
+#remember last category
+#first to XX points wins
+#different difficulties
+# Name changes and minor bug fixes (Last definitely working commit)
 
 app = Flask(__name__)
 app.secret_key = "apasswordineedforsomereason" 
