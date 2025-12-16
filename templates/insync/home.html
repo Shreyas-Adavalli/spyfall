@@ -460,21 +460,19 @@
             const needle = document.getElementById("needle");
             const targetArea = document.getElementById("targetArea");
             const toggleButton = document.getElementById("toggleButton");
-            const flowButton = document.getElementById("flowButton");
             const nextRoundButton = document.getElementById("nextRoundButton");
             const newGameButton = document.getElementById("newGameButton");
             const homeButton = document.getElementById("homeButton");
             const cluesElement = document.getElementById("clues");
             const scoreElement = document.getElementById("score");
             const totalScoreElement = document.getElementById("totalScore");
-            
 
             let isDragging = false;
             let targetAngle = 0;
             let isTargetVisible = true;
             let totalScore = 0;
             let canMoveNeedle = false;
-            let flowState = 0;  
+            // let flowState = 0;  
             // 0 = Hide Target
             // 1 = Reveal Target
             // 2 = Next Round
