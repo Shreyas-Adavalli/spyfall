@@ -447,6 +447,9 @@
             <button id="newGameButton" style="background-color: red; color: white">
                 New Game
             </button>
+            <button id="homeButton" style="background-color: rgb(255, 104, 58); color: white">
+                Back to Home
+            </button>
 
         </div>
         <div id="score"></div>
@@ -681,7 +684,7 @@
             function handleStart(e) {
                 if (!canMoveNeedle) return;
                 isDragging = true;
-                e.preventDefault(); // Prevent default touch behavior
+                e.preventDefault(); // Prevent default touch behaviour
             }
 
             function triggerConfetti() {
@@ -689,7 +692,7 @@
                     particleCount: 150,
                     spread: 90,
                     origin: { y: 0.6 },
-                    colors: ['#ff0000', '#00ff00', '#0000ff'], // Custom colors
+                    colors: ['#ff0000', '#00ff00', '#0000ff'], // Custom colours
                     ticks: 200, // How long the animation lasts
                     shapes: ['square'], // Use only square confetti
                     gravity: 0.8, // Slightly increase gravity
@@ -699,7 +702,7 @@
 
             function handleMove(e) {
                 if (!isDragging || !canMoveNeedle) return;
-                e.preventDefault(); // Prevent default touch behavior
+                e.preventDefault(); // Prevent default touch behaviour
                 const rect = needleContainer.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.bottom;
